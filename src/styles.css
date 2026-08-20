@@ -44,7 +44,7 @@
 :root {
   /* Sharp corners = brutalist. Small radius only, never soft/pill on blocks. */
   --radius: 0.35rem;
-  --theme-hue: 250;
+  --theme-hue: 90;
 
   /* Thick black border everywhere + hard offset shadow (no blur). */
   --border-width: 3px;
