@@ -15,6 +15,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { BackButton } from "../components/BackButton";
+import { FAVICON_URL } from "../lib/site-config";
+import { onImgError } from "../lib/site-images";
 import { useI18n } from "../lib/i18n";
 
 export const Route = createFileRoute("/readme")({
@@ -51,6 +53,12 @@ function ReadmePage() {
 
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl pt-4 text-center">
+        <img
+          src={FAVICON_URL}
+          alt="Five Fail Family"
+          onError={onImgError}
+          className="mx-auto h-16 w-16 rounded-2xl border-2 border-foreground object-cover shadow-[3px_3px_0_0_var(--color-foreground)]"
+        />
         <span className="chip mt-5">
           <ScrollText className="h-3.5 w-3.5" />
           {r.badge}
