@@ -3,6 +3,7 @@ import { Bot, Crown, Shield, ShieldCheck, Sparkles, UserRound, Users, BadgeCheck
 import { img, onImgError } from "../lib/site-images";
 import { BackButton } from "../components/BackButton";
 import { AnimatedCounter } from "../components/AnimatedCounter";
+import { FAVICON_URL } from "../lib/site-config";
 import { useI18n } from "../lib/i18n";
 
 export const Route = createFileRoute("/admin")({
@@ -72,6 +73,12 @@ function AdminPage() {
 
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl pt-4 text-center">
+        <img
+          src={FAVICON_URL}
+          alt="Five Fail Family"
+          onError={onImgError}
+          className="mx-auto h-16 w-16 rounded-2xl border-2 border-foreground object-cover shadow-[3px_3px_0_0_var(--color-foreground)]"
+        />
         <span className="chip mt-5">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
           {t.admin.badge}
