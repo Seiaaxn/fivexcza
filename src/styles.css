@@ -44,7 +44,7 @@
 :root {
   /* Sharp corners = brutalist. Small radius only, never soft/pill on blocks. */
   --radius: 0.35rem;
-  --theme-hue: 90;
+  --theme-hue: 220;
 
   /* Thick black border everywhere + hard offset shadow (no blur). */
   --border-width: 3px;
@@ -67,17 +67,17 @@
   --muted: oklch(0.91 0.03 var(--theme-hue));
   --muted-foreground: oklch(0.4 0.02 var(--theme-hue));
   /* Accent (highlight color) — overridable by theme picker. Flat, saturated, no gradient. */
-  --accent: oklch(0.8 0.19 var(--theme-hue));
-  --accent-foreground: oklch(0.14 0.01 var(--theme-hue));
+  --accent: oklch(0.65 0.22 var(--theme-hue));
+  --accent-foreground: oklch(0.98 0.01 var(--theme-hue));
   --accent-shadow: var(--foreground);
   /* Secondary + tertiary accents — used to give each section its own personality
      instead of repeating a single hue everywhere. */
-  --accent-2: oklch(0.78 0.17 350);
-  --accent-2-foreground: oklch(0.14 0.01 350);
-  --accent-3: oklch(0.74 0.14 220);
-  --accent-3-foreground: oklch(0.14 0.01 220);
-  --accent-4: oklch(0.82 0.16 140);
-  --accent-4-foreground: oklch(0.14 0.01 140);
+  --accent-2: oklch(0.72 0.19 270);
+  --accent-2-foreground: oklch(0.98 0.01 270);
+  --accent-3: oklch(0.75 0.18 190);
+  --accent-3-foreground: oklch(0.14 0.01 190);
+  --accent-4: oklch(0.7 0.2 250);
+  --accent-4-foreground: oklch(0.98 0.01 250);
   --destructive: oklch(0.58 0.24 25);
   --destructive-foreground: oklch(0.985 0.012 var(--theme-hue));
   /* Border is always solid black/ink — a core neobrutalism trait. */
@@ -101,12 +101,12 @@
   --muted-foreground: oklch(0.72 0.02 var(--theme-hue));
   --accent-foreground: oklch(0.14 0.01 var(--theme-hue));
   --accent-shadow: var(--foreground);
-  --accent-2: oklch(0.7 0.17 350);
-  --accent-2-foreground: oklch(0.97 0.015 350);
-  --accent-3: oklch(0.68 0.14 220);
-  --accent-3-foreground: oklch(0.97 0.015 220);
-  --accent-4: oklch(0.72 0.15 140);
-  --accent-4-foreground: oklch(0.1 0.01 140);
+  --accent-2: oklch(0.62 0.2 270);
+  --accent-2-foreground: oklch(0.97 0.015 270);
+  --accent-3: oklch(0.68 0.19 190);
+  --accent-3-foreground: oklch(0.97 0.015 190);
+  --accent-4: oklch(0.6 0.22 250);
+  --accent-4-foreground: oklch(0.97 0.015 250);
   --destructive: oklch(0.65 0.22 25);
   --border: var(--foreground);
   --input: oklch(0.35 0.03 var(--theme-hue));
