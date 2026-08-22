@@ -36,7 +36,7 @@ const admins: { name: string; role: string; image?: string; owner?: boolean }[] 
   { name: "𝟓𝐅 𝙁𝙞𝙠𝙠 𝗳𝘁 | 𝗖𝗚", role: "Admin Utama & Select", image: "https://cdn.nekohime.site/file/4pmprnmm.jpg" },
   { name: "@sei_mieayam", role: "Admin Utama & Bot", image: "https://cdn.nekohime.site/file/g9g4s4yw.jpg" },
   { name: "@fazzraijinup", role: "Admin Utama & Collab", image: "https://cdn.nekohime.site/file/u254l04v.jpg" },
-  { name: "Kotono Shiunji", role: "Bot & Security", image: "https://cdn.nekohime.site/file/5cl5ue90.jpg" },
+  { name: "Aomi Haru", role: "Bot & Security", image: "https://cdn.nekohime.site/file/k8kkynxf.jpg" },
   { name: "𝘿𝙖𝙣𝙪𝙥𝙧𝙨𝙩`𝗳𝘁 𝟓𝐅", role: "Admin Utama & Select", image: "https://cdn.nekohime.site/file/pypmkob6.jpeg" },
   { name: "Fiku", role: "Admin Gen 1 & Select", image: "https://cdn.nekohime.site/file/tvnvsfyk.jpeg" },
   { name: "@stevenprsttt", role: "Admin Utama & Select", image: "https://cdn.nekohime.site/file/dq6xs5r0.jpeg" },
