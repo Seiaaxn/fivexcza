@@ -118,7 +118,7 @@ const dictionaries = {
           note: "Open member, tanpa syarat followers minimal - cocok untuk yang baru mulai.",
         },
       ],
-      flowTitle: "Alur Seleksi (Jalur 1)",
+      flowTitle: "Alur Seleksi",
       flow: [
         "Masuk grup WhatsApp seleksi.",
         "Perkenalan & verifikasi akun TikTok.",
