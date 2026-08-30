@@ -31,7 +31,6 @@ const memberCounts = GEN_MEMBER_COUNTS;
 function Index() {
   const { t } = useI18n();
   const [slide, setSlide] = useState(0);
-  // Track loaded state per image to defer animation until all are ready
   const [loaded, setLoaded] = useState<boolean[]>(genImages.map(() => false));
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const gens = t.home.gens;
@@ -50,7 +49,6 @@ function Index() {
     timerRef.current = setInterval(() => setSlide((s) => (s + 1) % genImages.length), 4500);
   };
 
-  // Start auto-slide only once all images are loaded to avoid blank frames
   useEffect(() => {
     if (!allLoaded) return;
     startTimer();
@@ -102,12 +100,6 @@ function Index() {
 
       {/* Slider */}
       <section id="konten" className="glass-card p-6 md:p-10">
-        {/*
-          Hidden preload container: render all slide images at zero size so the
-          browser fetches & caches them before the animation starts.
-          onLoad sets the `loaded` flag so we only enable CSS transitions once
-          all images are in cache — prevents blank frames during first cycle.
-        */}
         <div
           aria-hidden="true"
           style={{ position: "absolute", width: 0, height: 0, overflow: "hidden", pointerEvents: "none" }}
@@ -130,7 +122,6 @@ function Index() {
             className="flex"
             style={{
               transform: `translateX(-${slide * 100}%)`,
-              // Only animate after all images are loaded; skips jarring blank frame on first play
               transition: allLoaded
                 ? "transform 600ms cubic-bezier(0.4, 0, 0.2, 1)"
                 : "none",
@@ -203,7 +194,15 @@ function Index() {
       <HashtagSection />
 
       <footer className="mt-20 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Five Fail Family · {t.home.footer}
+        © {new Date().getFullYear()} Five Fail Family ·{" "}
+        <a
+          href="https://www.tiktok.com/@inishinjirs"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-foreground underline-offset-4 hover:underline hover:text-accent transition-colors"
+        >
+          {t.home.footer}
+        </a>
       </footer>
     </main>
   );
