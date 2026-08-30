@@ -27,7 +27,12 @@ export function NavBar() {
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur">
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:flex sm:justify-between">
-        <div className="min-w-0" />
+        <div className="min-w-0">
+          <a href="/" className="inline-flex items-center gap-2 font-display font-bold text-base tracking-tight text-foreground hover:text-accent transition-colors">
+            <span className="text-accent font-extrabold">5F</span>
+            <span className="hidden sm:inline text-sm font-semibold opacity-80">Five Fail Family</span>
+          </a>
+        </div>
 
         <ul className="hidden items-center gap-1 font-mono text-xs font-semibold uppercase tracking-wider md:flex">
           {links.map((l) => (
