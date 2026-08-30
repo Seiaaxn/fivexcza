@@ -5,18 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Five Fail Family — Neobrutalism design.
- * Flat paper background, thick solid black borders, hard offset shadows
- * (no blur/gradient), punchy saturated accent, bold display + mono body.
+ * Five Fail Family — Modern soft UI.
+ * Clean surfaces, soft shadows, rounded corners, subtle borders.
  * All colors semantic, oklch only.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -36,81 +35,74 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-display: "Archivo Black", "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Archivo Black", system-ui, sans-serif;
 }
 
 :root {
-  /* Sharp corners = brutalist. Small radius only, never soft/pill on blocks. */
-  --radius: 0.35rem;
+  /* Soft, rounded — no more sharp brutalist corners. */
+  --radius: 1rem;
   --theme-hue: 220;
 
-  /* Thick black border everywhere + hard offset shadow (no blur). */
-  --border-width: 3px;
-  --shadow-x: 5px;
-  --shadow-y: 5px;
-  --brutal-shadow: var(--shadow-x) var(--shadow-y) 0 0 var(--foreground);
-  --brutal-shadow-sm: 3px 3px 0 0 var(--foreground);
-  --brutal-shadow-lg: 8px 8px 0 0 var(--foreground);
+  --shadow-color: color-mix(in oklab, var(--theme-shadow, oklch(0.2 0.03 var(--theme-hue))) 100%, transparent);
+  --shadow-sm: 0 1px 2px 0 color-mix(in oklab, var(--foreground) 6%, transparent);
+  --shadow-md: 0 8px 24px -8px color-mix(in oklab, var(--foreground) 16%, transparent);
+  --shadow-lg: 0 16px 40px -12px color-mix(in oklab, var(--foreground) 22%, transparent);
 
-  --background: oklch(0.97 0.02 var(--theme-hue));
-  --foreground: oklch(0.14 0.01 var(--theme-hue));
-  --card: oklch(1 0.006 var(--theme-hue));
-  --card-foreground: oklch(0.14 0.01 var(--theme-hue));
-  --popover: oklch(1 0.006 var(--theme-hue));
-  --popover-foreground: oklch(0.14 0.01 var(--theme-hue));
-  --primary: oklch(0.14 0.01 var(--theme-hue));
-  --primary-foreground: oklch(0.985 0.012 var(--theme-hue));
-  --secondary: oklch(0.93 0.035 var(--theme-hue));
-  --secondary-foreground: oklch(0.14 0.01 var(--theme-hue));
-  --muted: oklch(0.91 0.03 var(--theme-hue));
-  --muted-foreground: oklch(0.4 0.02 var(--theme-hue));
-  /* Accent (highlight color) — overridable by theme picker. Flat, saturated, no gradient. */
-  --accent: oklch(0.65 0.22 var(--theme-hue));
-  --accent-foreground: oklch(0.98 0.01 var(--theme-hue));
-  --accent-shadow: var(--foreground);
-  /* Secondary + tertiary accents — used to give each section its own personality
-     instead of repeating a single hue everywhere. */
-  --accent-2: oklch(0.72 0.19 270);
-  --accent-2-foreground: oklch(0.98 0.01 270);
-  --accent-3: oklch(0.75 0.18 190);
-  --accent-3-foreground: oklch(0.14 0.01 190);
-  --accent-4: oklch(0.7 0.2 250);
-  --accent-4-foreground: oklch(0.98 0.01 250);
-  --destructive: oklch(0.58 0.24 25);
-  --destructive-foreground: oklch(0.985 0.012 var(--theme-hue));
-  /* Border is always solid black/ink — a core neobrutalism trait. */
-  --border: var(--foreground);
-  --input: oklch(0.88 0.02 var(--theme-hue));
-  --ring: var(--foreground);
+  --background: oklch(0.98 0.006 var(--theme-hue));
+  --foreground: oklch(0.18 0.02 var(--theme-hue));
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 var(--theme-hue));
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 var(--theme-hue));
+  --primary: oklch(0.18 0.02 var(--theme-hue));
+  --primary-foreground: oklch(0.985 0.006 var(--theme-hue));
+  --secondary: oklch(0.955 0.01 var(--theme-hue));
+  --secondary-foreground: oklch(0.18 0.02 var(--theme-hue));
+  --muted: oklch(0.95 0.01 var(--theme-hue));
+  --muted-foreground: oklch(0.5 0.02 var(--theme-hue));
+  /* Accent (highlight color) — soft, saturated but friendly, no gradient noise. */
+  --accent: oklch(0.58 0.19 var(--theme-hue));
+  --accent-foreground: oklch(0.99 0.005 var(--theme-hue));
+  /* Secondary + tertiary accents — used to give each section its own personality. */
+  --accent-2: oklch(0.65 0.16 280);
+  --accent-2-foreground: oklch(0.99 0.005 280);
+  --accent-3: oklch(0.68 0.14 175);
+  --accent-3-foreground: oklch(0.16 0.02 175);
+  --accent-4: oklch(0.62 0.17 40);
+  --accent-4-foreground: oklch(0.99 0.005 40);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.985 0.006 var(--theme-hue));
+  --border: oklch(0.9 0.012 var(--theme-hue));
+  --input: oklch(0.93 0.012 var(--theme-hue));
+  --ring: var(--accent);
 }
 
 .dark {
-  --background: oklch(0.16 0.02 var(--theme-hue));
-  --foreground: oklch(0.97 0.015 var(--theme-hue));
-  --card: oklch(0.22 0.025 var(--theme-hue));
-  --card-foreground: oklch(0.97 0.015 var(--theme-hue));
-  --popover: oklch(0.22 0.025 var(--theme-hue));
-  --popover-foreground: oklch(0.97 0.015 var(--theme-hue));
-  --primary: oklch(0.97 0.015 var(--theme-hue));
-  --primary-foreground: oklch(0.16 0.02 var(--theme-hue));
-  --secondary: oklch(0.28 0.03 var(--theme-hue));
-  --secondary-foreground: oklch(0.97 0.015 var(--theme-hue));
-  --muted: oklch(0.26 0.025 var(--theme-hue));
-  --muted-foreground: oklch(0.72 0.02 var(--theme-hue));
+  --background: oklch(0.15 0.018 var(--theme-hue));
+  --foreground: oklch(0.96 0.01 var(--theme-hue));
+  --card: oklch(0.19 0.02 var(--theme-hue));
+  --card-foreground: oklch(0.96 0.01 var(--theme-hue));
+  --popover: oklch(0.19 0.02 var(--theme-hue));
+  --popover-foreground: oklch(0.96 0.01 var(--theme-hue));
+  --primary: oklch(0.96 0.01 var(--theme-hue));
+  --primary-foreground: oklch(0.15 0.018 var(--theme-hue));
+  --secondary: oklch(0.25 0.02 var(--theme-hue));
+  --secondary-foreground: oklch(0.96 0.01 var(--theme-hue));
+  --muted: oklch(0.24 0.02 var(--theme-hue));
+  --muted-foreground: oklch(0.68 0.015 var(--theme-hue));
   --accent-foreground: oklch(0.14 0.01 var(--theme-hue));
-  --accent-shadow: var(--foreground);
-  --accent-2: oklch(0.62 0.2 270);
-  --accent-2-foreground: oklch(0.97 0.015 270);
-  --accent-3: oklch(0.68 0.19 190);
-  --accent-3-foreground: oklch(0.97 0.015 190);
-  --accent-4: oklch(0.6 0.22 250);
-  --accent-4-foreground: oklch(0.97 0.015 250);
+  --accent-2: oklch(0.62 0.17 280);
+  --accent-2-foreground: oklch(0.97 0.01 280);
+  --accent-3: oklch(0.66 0.15 175);
+  --accent-3-foreground: oklch(0.14 0.02 175);
+  --accent-4: oklch(0.6 0.18 40);
+  --accent-4-foreground: oklch(0.97 0.01 40);
   --destructive: oklch(0.65 0.22 25);
-  --border: var(--foreground);
-  --input: oklch(0.35 0.03 var(--theme-hue));
-  --ring: var(--foreground);
+  --border: oklch(0.3 0.02 var(--theme-hue));
+  --input: oklch(0.28 0.02 var(--theme-hue));
+  --ring: var(--accent);
 }
 
 @layer base {
@@ -122,15 +114,10 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv01";
-    /* Subtle grid, a common neobrutalism paper texture — flat, no blur. */
-    background-image:
-      linear-gradient(color-mix(in oklab, var(--color-foreground) 5%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in oklab, var(--color-foreground) 5%, transparent) 1px, transparent 1px);
-    background-size: 28px 28px;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -139,39 +126,35 @@
 @utility chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--color-foreground);
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
   background: var(--color-card);
   color: var(--color-foreground);
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  box-shadow: 3px 3px 0 0 var(--color-foreground);
+  letter-spacing: 0.06em;
+  box-shadow: var(--shadow-sm);
 }
 
-/* "glass-card" kept as class name for compatibility, now a flat brutalist block. */
+/* Soft elevated card — rounded corners, gentle shadow, no hard border. */
 @utility glass-card {
   position: relative;
-  border-radius: var(--radius);
-  border: var(--border-width) solid var(--color-foreground);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
   background: var(--color-card);
   color: var(--color-card-foreground);
-  box-shadow: var(--brutal-shadow);
-  transition: transform 140ms ease, box-shadow 140ms ease;
+  box-shadow: var(--shadow-md);
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 @utility glass-card-hover {
   &:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--brutal-shadow-lg);
-  }
-  &:active {
-    transform: translate(0, 0);
-    box-shadow: 2px 2px 0 0 var(--color-foreground);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
   }
 }
 
@@ -180,22 +163,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.25rem;
-  border-radius: var(--radius-sm);
-  border: var(--border-width) solid var(--color-foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
   background: var(--color-accent);
   color: var(--color-accent-foreground);
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  box-shadow: var(--brutal-shadow-sm);
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
   cursor: pointer;
-  &:hover { transform: translate(-2px, -2px); box-shadow: var(--brutal-shadow); }
-  &:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 0 var(--color-foreground); }
-  &:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: var(--brutal-shadow-sm); }
+  &:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); opacity: 0.94; }
+  &:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+  &:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 }
 
 @utility btn-ghost {
@@ -203,170 +184,30 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.15rem;
-  border-radius: var(--radius-sm);
-  border: var(--border-width) solid var(--color-foreground);
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
   background: var(--color-card);
   color: var(--color-foreground);
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  box-shadow: var(--brutal-shadow-sm);
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
   cursor: pointer;
-  &:hover { background: var(--color-secondary); transform: translate(-2px, -2px); box-shadow: var(--brutal-shadow); }
-  &:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 0 var(--color-foreground); }
+  &:hover { background: var(--color-secondary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  &:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
 }
 
 @utility text-accent-soft {
-  color: var(--color-foreground);
-  font-weight: 800;
-}
-
-@utility highlight-bar {
-  display: inline-block;
-  color: var(--color-foreground);
-  font-weight: 800;
-  background: color-mix(in oklab, var(--color-accent) 70%, transparent);
-  padding: 0 0.2em;
-}
-
-/* Chunky block with hard offset shadow (was "lego" soft 3D, now brutalist). */
-@utility lego-block {
-  position: relative;
-  border-radius: var(--radius);
-  border: var(--border-width) solid var(--color-foreground);
-  background: var(--color-card);
-  color: var(--color-card-foreground);
-  box-shadow: var(--brutal-shadow);
-  transition: transform 140ms ease, box-shadow 140ms ease;
-}
-@utility lego-block-hover {
-  &:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--brutal-shadow-lg);
-  }
-}
-
-/* Studs on top of a block — flat squares with border instead of soft bumps. */
-@utility lego-stud {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: 16px;
-    width: 16px;
-    height: 3px;
-    background: var(--color-foreground);
-    box-shadow:
-      28px 0 0 0 var(--color-foreground),
-      56px 0 0 0 var(--color-foreground);
-  }
-}
-
-/* ── Section variety helpers ──────────────────────────────────── */
-
-/* Full-bleed colour bands so different sections read as distinct "rooms"
-   instead of one uniform page. Each escapes the max-w container via
-   negative viewport margins + full-width padding. */
-@utility band {
-  position: relative;
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  border-top: var(--border-width) solid var(--color-foreground);
-  border-bottom: var(--border-width) solid var(--color-foreground);
-}
-
-@utility band-1 {
-  background: color-mix(in oklab, var(--color-accent) 14%, var(--color-background));
-}
-@utility band-2 {
-  background: color-mix(in oklab, var(--accent-2) 14%, var(--color-background));
-}
-@utility band-3 {
-  background: color-mix(in oklab, var(--accent-3) 14%, var(--color-background));
-}
-@utility band-4 {
-  background: color-mix(in oklab, var(--accent-4) 14%, var(--color-background));
-}
-
-/* Dotted texture overlay, alternative to the default grid, for bands that
-   want a punchier paper texture. */
-@utility band-dots {
-  background-image: radial-gradient(color-mix(in oklab, var(--color-foreground) 18%, transparent) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
-}
-
-/* Slight rotation so repeated cards don't all sit dead-straight. */
-@utility tilt-l { transform: rotate(-1.5deg); }
-@utility tilt-r { transform: rotate(1.5deg); }
-@utility tilt-none { transform: rotate(0deg); }
-
-/* Chip / card colour variants matching the secondary accents. */
-@utility chip-2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--color-foreground);
-  background: var(--accent-2);
-  color: var(--accent-2-foreground);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  color: var(--color-accent);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  box-shadow: 3px 3px 0 0 var(--color-foreground);
 }
 
-@utility chip-3 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--color-foreground);
-  background: var(--accent-3);
-  color: var(--accent-3-foreground);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  box-shadow: 3px 3px 0 0 var(--color-foreground);
-}
-
-@utility card-accent-2 {
-  border-radius: var(--radius);
-  border: var(--border-width) solid var(--color-foreground);
-  background: var(--accent-2);
-  color: var(--accent-2-foreground);
-  box-shadow: var(--brutal-shadow);
-}
-@utility card-accent-3 {
-  border-radius: var(--radius);
-  border: var(--border-width) solid var(--color-foreground);
-  background: var(--accent-3);
-  color: var(--accent-3-foreground);
-  box-shadow: var(--brutal-shadow);
-}
-@utility card-accent-4 {
-  border-radius: var(--radius);
-  border: var(--border-width) solid var(--color-foreground);
-  background: var(--accent-4);
-  color: var(--accent-4-foreground);
-  box-shadow: var(--brutal-shadow);
-}
-
+/* Stat tile — used on small metric widgets. */
 @utility lego-stat {
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--color-foreground);
-  padding: 0.75rem;
-  background: color-mix(in oklab, var(--color-accent) 22%, var(--color-card));
-  box-shadow: 2px 2px 0 0 var(--color-foreground);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  padding: 0.85rem;
+  background: var(--color-secondary);
 }
