@@ -5,9 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Five Fail Family — Modern soft UI.
- * Clean surfaces, soft shadows, rounded corners, subtle borders.
- * All colors semantic, oklch only.
+ * Five Fail Family — Dark first. Hitam bukan biru.
+ * Palette: near-black base, zinc neutrals, accent merah-oranye (brand).
  */
 
 @theme inline {
@@ -40,74 +39,81 @@
   --font-display: "Space Grotesk", "Archivo Black", system-ui, sans-serif;
 }
 
+/* ── Dark (default / light is overridden below) ─────────────── */
 :root {
-  /* Soft, rounded — no more sharp brutalist corners. */
-  --radius: 1rem;
-  --theme-hue: 220;
+  --radius: 0.875rem;
+  --theme-hue: 0; /* netral, tidak biru */
 
-  --shadow-color: color-mix(in oklab, var(--theme-shadow, oklch(0.2 0.03 var(--theme-hue))) 100%, transparent);
-  --shadow-sm: 0 1px 2px 0 color-mix(in oklab, var(--foreground) 6%, transparent);
-  --shadow-md: 0 8px 24px -8px color-mix(in oklab, var(--foreground) 16%, transparent);
-  --shadow-lg: 0 16px 40px -12px color-mix(in oklab, var(--foreground) 22%, transparent);
+  --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.5);
+  --shadow-md: 0 8px 24px -8px rgba(0,0,0,0.65);
+  --shadow-lg: 0 16px 40px -12px rgba(0,0,0,0.75);
 
-  --background: oklch(0.98 0.006 var(--theme-hue));
-  --foreground: oklch(0.18 0.02 var(--theme-hue));
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 var(--theme-hue));
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 var(--theme-hue));
-  --primary: oklch(0.18 0.02 var(--theme-hue));
-  --primary-foreground: oklch(0.985 0.006 var(--theme-hue));
-  --secondary: oklch(0.955 0.01 var(--theme-hue));
-  --secondary-foreground: oklch(0.18 0.02 var(--theme-hue));
-  --muted: oklch(0.95 0.01 var(--theme-hue));
-  --muted-foreground: oklch(0.5 0.02 var(--theme-hue));
-  /* Accent (highlight color) — soft, saturated but friendly, no gradient noise. */
-  --accent: oklch(0.58 0.19 var(--theme-hue));
-  --accent-foreground: oklch(0.99 0.005 var(--theme-hue));
-  /* Secondary + tertiary accents — used to give each section its own personality. */
-  --accent-2: oklch(0.65 0.16 280);
+  /* Base — hitam pekat, bukan biru gelap */
+  --background: oklch(0.10 0.003 0);
+  --foreground: oklch(0.94 0.005 0);
+
+  --card: oklch(0.145 0.005 0);
+  --card-foreground: oklch(0.94 0.005 0);
+  --popover: oklch(0.16 0.005 0);
+  --popover-foreground: oklch(0.94 0.005 0);
+
+  --primary: oklch(0.94 0.005 0);
+  --primary-foreground: oklch(0.10 0.003 0);
+
+  --secondary: oklch(0.20 0.005 0);
+  --secondary-foreground: oklch(0.90 0.005 0);
+
+  --muted: oklch(0.20 0.005 0);
+  --muted-foreground: oklch(0.58 0.006 0);
+
+  /* Accent — oranye-merah menyala (brand 5F) */
+  --accent: oklch(0.68 0.22 32);
+  --accent-foreground: oklch(0.99 0.005 32);
+
+  --accent-2: oklch(0.65 0.18 280);
   --accent-2-foreground: oklch(0.99 0.005 280);
-  --accent-3: oklch(0.68 0.14 175);
-  --accent-3-foreground: oklch(0.16 0.02 175);
-  --accent-4: oklch(0.62 0.17 40);
-  --accent-4-foreground: oklch(0.99 0.005 40);
-  --destructive: oklch(0.58 0.22 25);
-  --destructive-foreground: oklch(0.985 0.006 var(--theme-hue));
-  --border: oklch(0.9 0.012 var(--theme-hue));
-  --input: oklch(0.93 0.012 var(--theme-hue));
+  --accent-3: oklch(0.68 0.16 175);
+  --accent-3-foreground: oklch(0.14 0.02 175);
+  --accent-4: oklch(0.70 0.19 60);
+  --accent-4-foreground: oklch(0.99 0.005 60);
+
+  --destructive: oklch(0.62 0.24 25);
+  --destructive-foreground: oklch(0.99 0.005 0);
+
+  --border: oklch(0.22 0.005 0);
+  --input: oklch(0.20 0.005 0);
   --ring: var(--accent);
 }
 
-.dark {
-  --background: oklch(0.15 0.018 var(--theme-hue));
-  --foreground: oklch(0.96 0.01 var(--theme-hue));
-  --card: oklch(0.19 0.02 var(--theme-hue));
-  --card-foreground: oklch(0.96 0.01 var(--theme-hue));
-  --popover: oklch(0.19 0.02 var(--theme-hue));
-  --popover-foreground: oklch(0.96 0.01 var(--theme-hue));
-  --primary: oklch(0.96 0.01 var(--theme-hue));
-  --primary-foreground: oklch(0.15 0.018 var(--theme-hue));
-  --secondary: oklch(0.25 0.02 var(--theme-hue));
-  --secondary-foreground: oklch(0.96 0.01 var(--theme-hue));
-  --muted: oklch(0.24 0.02 var(--theme-hue));
-  --muted-foreground: oklch(0.68 0.015 var(--theme-hue));
-  --accent-foreground: oklch(0.14 0.01 var(--theme-hue));
-  --accent-2: oklch(0.62 0.17 280);
-  --accent-2-foreground: oklch(0.97 0.01 280);
-  --accent-3: oklch(0.66 0.15 175);
-  --accent-3-foreground: oklch(0.14 0.02 175);
-  --accent-4: oklch(0.6 0.18 40);
-  --accent-4-foreground: oklch(0.97 0.01 40);
-  --destructive: oklch(0.65 0.22 25);
-  --border: oklch(0.3 0.02 var(--theme-hue));
-  --input: oklch(0.28 0.02 var(--theme-hue));
-  --ring: var(--accent);
+/* ── Light mode (opsional, kalau user prefer light) ─────────── */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: oklch(0.97 0.003 0);
+    --foreground: oklch(0.14 0.005 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.14 0.005 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.14 0.005 0);
+    --primary: oklch(0.14 0.005 0);
+    --primary-foreground: oklch(0.97 0.003 0);
+    --secondary: oklch(0.94 0.005 0);
+    --secondary-foreground: oklch(0.14 0.005 0);
+    --muted: oklch(0.94 0.005 0);
+    --muted-foreground: oklch(0.50 0.006 0);
+    --accent: oklch(0.62 0.22 32);
+    --accent-foreground: oklch(0.99 0.005 32);
+    --border: oklch(0.88 0.005 0);
+    --input: oklch(0.92 0.005 0);
+    --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.08);
+    --shadow-md: 0 8px 24px -8px rgba(0,0,0,0.14);
+    --shadow-lg: 0 16px 40px -12px rgba(0,0,0,0.18);
+  }
 }
 
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
   }
   body {
     background-color: var(--color-background);
@@ -121,7 +127,7 @@
   }
 }
 
-/* ── Reusable component utilities ─────────────────────────────── */
+/* ── Reusable utilities ─────────────────────────────────────── */
 
 @utility chip {
   display: inline-flex;
@@ -140,7 +146,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Soft elevated card — rounded corners, gentle shadow, no hard border. */
 @utility glass-card {
   position: relative;
   border-radius: var(--radius-xl);
@@ -155,6 +160,7 @@
   &:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
+    border-color: oklch(from var(--color-accent) l c h / 0.4);
   }
 }
 
@@ -174,9 +180,9 @@
   box-shadow: var(--shadow-sm);
   transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
   cursor: pointer;
-  &:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); opacity: 0.94; }
+  &:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); opacity: 0.90; }
   &:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
-  &:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 }
 
 @utility btn-ghost {
@@ -204,7 +210,6 @@
   font-weight: 700;
 }
 
-/* Stat tile — used on small metric widgets. */
 @utility lego-stat {
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
